@@ -1,0 +1,2 @@
+# Discrete-Mathematics-Python
+这个仓库会定期更新与离散数学知识相关，用python语言实现的题目以及参考代码
