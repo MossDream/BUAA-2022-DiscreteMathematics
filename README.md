@@ -12,11 +12,9 @@
 * All the reference code can pass **all the test points**, but because I am still in school to learn, the level is limited.Please forgive my fault!  
 * **Please leave a message if you have any questions!**  
 
-## 更新日志 Update Blogs
-### **2023/04/08** **April 8th , 2023**  
-* 更新了 **[math_1.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_1.py)** 题目及参考代码文件  
-* Update with **[math_1.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_1.py)** for reference code and question.  
+## 资料信息索引 Index of data information
+### 参考代码及题目文件 Files for reference code and questions
+* **[math_1.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_1.py)**
+* **[math_2.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_2.py)** 
 
-### **2023/04/10** **April 10th , 2023**  
-* 更新了 **[math_2.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_2.py)** 题目及参考代码文件  
-* Update with **[math_2.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_2.py)** for reference code and question.  
+  
