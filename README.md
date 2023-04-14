@@ -15,6 +15,7 @@
 ## 资料信息索引 Index of data information
 ### 参考代码及题目文件 Files for reference code and questions
 * **[math_1.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_1.py)**
-* **[math_2.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_2.py)** 
+* **[math_2.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_2.py)**
+* **[math_3.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_3.py)**
 
   
