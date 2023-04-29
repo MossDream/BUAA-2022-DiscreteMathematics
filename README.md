@@ -17,5 +17,6 @@
 * **[math_1.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_1.py)**
 * **[math_2.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_2.py)**
 * **[math_3.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_3.py)**
+* **[math_4.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_4.py)**
 
   
