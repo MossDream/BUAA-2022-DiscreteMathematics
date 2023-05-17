@@ -52,9 +52,9 @@ def TrueOrNot(formula):
     - 2: 公式为可满足式
     """
     def to_reverse_polish(formula: str) -> list[str]:
-    stack = []
-    output = []
-    precedence = {
+        stack = []
+        output = []
+        precedence = {
         '¬': 3,
         '∧': 2,
         '∨': 1,
@@ -63,34 +63,70 @@ def TrueOrNot(formula):
         '⨁': 0,
     }
 
-    for token in formula:
-        if token.isalpha():
-            output.append(token)
-        elif token == '(':
-            stack.append(token)
-        elif token == ')':
-            while stack and stack[-1] != '(':
-                output.append(stack.pop())
-            stack.pop()
-        elif token in precedence:
-            while stack and stack[-1] != '(' and precedence[token] <= precedence[stack[-1]]:
-                output.append(stack.pop())
-            stack.append(token)
-        else:
-            stack.append(token)
+        for token in formula:
+            if token.isalpha():
+                output.append(token)
+            elif token == '(':
+                stack.append(token)
+            elif token == ')':
+                while stack and stack[-1] != '(':
+                    output.append(stack.pop())
+                stack.pop()
+            elif token in precedence:
+                while stack and stack[-1] != '(' and precedence[token] <= precedence[stack[-1]]:
+                    output.append(stack.pop())
+                stack.append(token)
+            else:
+                stack.append(token)
 
-    while stack:
-        output.append(stack.pop())
+        while stack:
+            output.append(stack.pop())
 
-    return output
+        return output
+    def evaluate_reverse_polish(expression: list[str], values: dict[str, bool]) -> bool:
+        stack = []
+
+        for token in expression:
+            if token.isalpha():
+                stack.append(values[token])
+            elif token == '¬':
+                stack.append(not stack.pop())
+            elif token == '∧':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left and right)
+            elif token == '∨':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left or right)
+            elif token == '→':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(not left or right)
+            elif token == '↔':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left == right)
+            elif token == '⨁':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left != right)
+
+        return stack.pop()
+    
     # 读取并构建变元集合
     variables = set()
     for c in formula:
         if c.isalpha():
             variables.add(c)
     variables = list(variables)
-    # 构建操作符符号栈
-    operators_stack = []
+    # 生成所有可能的真值字典列表
+    truth_values = list(np.ndindex((2,) * len(variables)))
+    # 生成逆波兰表达式
+    rp_formula = to_reverse_polish(formula)
+    # 检查公式真值
+    for values in truth_values:
+    
     
     # 构建联结词的等值演算规则
     connectives = {
