@@ -39,7 +39,7 @@ def Produce(m, n):
     result = generate_sub_formula(n)
     return result
 
-def TrueOrNot(formula):
+def TrueOrNot(formula): 
     """
     判断合式公式的真值
 
@@ -122,16 +122,20 @@ def TrueOrNot(formula):
         if c.isalpha():
             variables.add(c)
     variables = list(variables)
+    print(variables)
     # 生成所有可能的真值字典列表
     truth_values = list(np.ndindex((2,) * len(variables)))
+    print(truth_values)
     # 生成逆波兰表达式
     rp_formula = to_reverse_polish(formula)
+    print(rp_formula)
     # 检查公式真值结果的列表
     truth_values_result = []
     # 计算公式真值情况
     for values in truth_values:
         values = dict(zip(variables, values))
         truth_values_result.append(evaluate_reverse_polish(rp_formula, values))
+    print(truth_values_result)
     # 判断公式真值情况
     cnt=0
     for result in truth_values_result:
@@ -173,8 +177,16 @@ def main():
     print(Produce(4,4))
     print(Produce(4,4))
     print(Produce(4,4))
-    print(TrueOrNot("(p ∨ q) ∧ (¬p ∨ q) ↔ (p ∨ q ∨ r)"))
-
-
+    print(TrueOrNot("¬p ∧ p"))
+    assert TrueOrNot("¬(p ∧ q) ↔ (¬p ∨ ¬q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q)") == 2
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
+    assert TrueOrNot("(p ∧ q) ∨ (¬p ∧ ¬q) ↔ ¬(p ↔ q)") == 0
 if __name__=="__main__":
     main()
