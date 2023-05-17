@@ -181,7 +181,15 @@ def EqualOrNot(formula1, formula2):
     - False: 公式1和公式2不逻辑等价
     """
     def to_cnf(formula: str) -> str:
+        """
+        将合式公式转换为合取范式
         
+        参数:
+        - formula: 合式公式字符串
+
+        返回值:
+        - cnf: 合取范式字符串
+        """
         variables = sorted(set(filter(str.isalpha, formula)))
         clauses = []
         for i in range(2 ** len(variables)):
