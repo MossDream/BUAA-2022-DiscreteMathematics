@@ -2,19 +2,21 @@ import numpy as np
 
 def Produce(m, n):
     """
-    生成符合条件的合式公式
+    随机生成符合条件的合式公式
 
     参数:
     - m: 变元数量
     - n: 公式复杂度
 
     返回值:
-    - formula: 生成的合式公式
+    - formula: 生成的合式公式字符串列表
     """
 
     # 定义联结词集合
     connectives = ['¬', '∧', '∨', '→', '↔', '⨁']
+    # 定义变元集合
     all_values=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U' ,'V','W','X','Y','Z']
+    # 随机生成变元集合
     values=[]
     cnt=m
     while(cnt>0):
@@ -36,7 +38,7 @@ def Produce(m, n):
             sub_formula2 = generate_sub_formula(depth-1)
             return '(' + sub_formula1 + ' ' + connective + ' ' + sub_formula2 + ')'
 
-    result = generate_sub_formula(n)
+    result = list(generate_sub_formula(n))
     return result
 
 def TrueOrNot(formula): 
