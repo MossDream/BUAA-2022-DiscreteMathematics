@@ -52,6 +52,8 @@ def TrueOrNot(formula):
     - 2: 公式为可满足式
     """
     def to_reverse_polish(formula: str) -> list[str]:
+        #去除空格
+        formula = formula.replace(' ', '')
         stack = []
         output = []
         precedence = {
