@@ -150,7 +150,6 @@ def EqualOrNot(formula1, formula2):
     参数:
     - formula1: 公式1
     - formula2: 公式2
-    - m: 变元数量
 
     返回值:
     - True: 公式1和公式2逻辑等价
