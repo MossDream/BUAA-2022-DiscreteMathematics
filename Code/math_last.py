@@ -124,26 +124,23 @@ def TrueOrNot(formula):
     truth_values = list(np.ndindex((2,) * len(variables)))
     # 生成逆波兰表达式
     rp_formula = to_reverse_polish(formula)
-    # 检查公式真值
+    # 检查公式真值结果的列表
+    truth_values_result = []
+    # 计算公式真值情况
     for values in truth_values:
-    
-    
-    # 构建联结词的等值演算规则
-    connectives = {
-        '¬': (lambda p: np.logical_not(p)),
-        '∧': (lambda p, q: np.logical_and(p, q)),
-        '∨': (lambda p, q: np.logical_or(p, q)),
-        '→': (lambda p, q: np.logical_or(np.logical_not(p), q)),
-        '↔': (lambda p, q: np.logical_or(np.logical_and(p, q), np.logical_and(np.logical_not(p), np.logical_not(q)))),
-        '⨁': (lambda p, q: np.logical_xor(p, q))
-    }
-    #
-    
-    
-    
-
-    
-
+        values = dict(zip(variables, values))
+        truth_values_result.append(evaluate_reverse_polish(rp_formula, values))
+    # 判断公式真值情况
+    cnt=0
+    for result in truth_values_result:
+        if result:
+            cnt+=1
+    if cnt==len(truth_values_result):
+        return 0
+    elif cnt==0:
+        return 1
+    else:
+        return 2  
 def check_equivalence(formula1, formula2, m):
     """
     判断两个公式是否逻辑等价
