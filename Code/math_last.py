@@ -204,7 +204,6 @@ def EqualOrNot(formula1, formula2):
                 clauses.append(' ∧ '.join(clause))
         return ' ∨ '.join(clauses)
 
-
     def evaluate(formula: str, values: dict[str, bool]) -> bool:
         expression = to_reverse_polish(formula)
         return evaluate_reverse_polish(expression, values)
