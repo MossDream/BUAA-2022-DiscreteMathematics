@@ -241,10 +241,42 @@ def EqualOrNot(formula1, formula2):
                 stack.append(left != right)
 
         return stack.pop()
-
-
-    
+    # 将两个公式转化为CNF
+    cnf_formula1 = to_cnf(formula1)
+    cnf_formula2 = to_cnf(formula2)
+    # 判断两个公式是否逻辑等价
+    if cnf_formula1 == cnf_formula2:
+        return True
+    else:
+        return False
 def main():
-    
+    print("这是第一个函数的测试:")
+    m=int(input("请输入变元的个数(m的值):"))
+    n=int(input("请输入公式的复杂度(n的值):"))
+    print("随机生成的公式为:")
+    print(Produce(m,n))
+    print("--------------------")
+    print("以下环节中,输入合式公式的要求是:")
+    print("1.变元为26个小写字母和26个大写字母,即52个字母")
+    print("2.联结词集合为{¬,∧,∨,→,↔,⨁}")
+    print("3.括号只能用小括号")
+    print("4.其他字符只能是空格")
+    print("--------------------")
+    print("这是第二个函数的测试:")
+    formula=input("请输入公式:")
+    if(TrueOrNot(formula)==0):
+        print("返回值为0,公式为永真式")
+    elif(TrueOrNot(formula)==1):
+        print("返回值为1,公式为永假式")
+    else: 
+        print("返回值为2,公式为可满足式")
+    print("--------------------")
+    print("这是第三个函数的测试:")
+    formula1=input("请输入公式1:")
+    formula2=input("请输入公式2:")
+    if(EqualOrNot(formula1,formula2)):
+        print("公式1和公式2逻辑等价")
+    else:
+        print("公式1和公式2不逻辑等价")
 if __name__=="__main__":
     main()
