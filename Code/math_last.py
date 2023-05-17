@@ -143,7 +143,7 @@ def TrueOrNot(formula):
         return 1
     else:
         return 2  
-def check_equivalence(formula1, formula2, m):
+def EqualOrNot(formula1, formula2):
     """
     判断两个公式是否逻辑等价
 
@@ -156,18 +156,94 @@ def check_equivalence(formula1, formula2, m):
     - True: 公式1和公式2逻辑等价
     - False: 公式1和公式2不逻辑等价
     """
+    def to_cnf(formula: str) -> str:
+        variables = sorted(set(filter(str.isalpha, formula)))
+        clauses = []
+        for i in range(2 ** len(variables)):
+            values = {variables[j]: bool(i & (1 << j)) for j in range(len(variables))}
+            if evaluate(formula, values):
+                clause = []
+                for variable, value in values.items():
+                    if value:
+                        clause.append(variable)
+                    else:
+                        clause.append('¬' + variable)
+                clauses.append(' ∧ '.join(clause))
+        return ' ∨ '.join(clauses)
 
-    # 生成所有可能的真值列表
-    truth_values = list(np.ndindex((2,) * m))
 
-    # 检查两个公式的真值是否一致
-    for values in truth_values:
-        result1 = TrueOrNot(formula1)
-        result2 = TrueOrNot(formula2)
-        if result1 != result2:
-            return False
+    def evaluate(formula: str, values: dict[str, bool]) -> bool:
+        expression = to_reverse_polish(formula)
+        return evaluate_reverse_polish(expression, values)
 
-    return True
+
+    def to_reverse_polish(formula: str) -> list[str]:
+        stack = []
+        output = []
+        precedence = {
+        '¬': 3,
+        '∧': 2,
+        '∨': 1,
+        '→': 0,
+        '↔': 0,
+        '⨁': 0,
+    }
+
+        for token in formula:
+            if token.isalpha():
+                output.append(token)
+            elif token == '(':
+                stack.append(token)
+            elif token == ')':
+                while stack and stack[-1] != '(':
+                    output.append(stack.pop())
+                stack.pop()
+            elif token in precedence:
+                while stack and stack[-1] != '(' and precedence[token] <= precedence[stack[-1]]:
+                    output.append(stack.pop())
+                stack.append(token)
+            else:
+                stack.append(token)
+
+        while stack:
+            output.append(stack.pop())
+
+        return output
+
+
+    def evaluate_reverse_polish(expression: list[str], values: dict[str, bool]) -> bool:
+        stack = []
+
+        for token in expression:
+            if token.isalpha():
+                stack.append(values[token])
+            elif token == '¬':
+                stack.append(not stack.pop())
+            elif token == '∧':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left and right)
+            elif token == '∨':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left or right)
+            elif token == '→':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(not left or right)
+            elif token == '↔':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left == right)
+            elif token == '⨁':
+                right = stack.pop()
+                left = stack.pop()
+                stack.append(left != right)
+
+        return stack.pop()
+
+
+    
 def main():
     
 if __name__=="__main__":
