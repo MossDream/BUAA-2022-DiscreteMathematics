@@ -54,10 +54,22 @@ def TrueOrNot(formula):
     - 2: 公式为可满足式
     """
     def to_reverse_polish(formula: str) -> list[str]:
+        """
+        将中缀表达式转换为逆波兰表达式
+        
+        参数:
+        - formula: 中缀表达式字符串
+         
+        返回值:
+        - output: 逆波兰表达式列表
+        """
         #去除空格
         formula = formula.replace(' ', '')
+        # 操作符栈
         stack = []
+        # 逆波兰表达式结果
         output = []
+        # 操作符优先级字典
         precedence = {
         '¬': 3,
         '∧': 2,
@@ -87,7 +99,18 @@ def TrueOrNot(formula):
             output.append(stack.pop())
 
         return output
+    
     def evaluate_reverse_polish(expression: list[str], values: dict[str, bool]) -> bool:
+        """
+        计算逆波兰表达式的真值
+
+        参数:
+        - expression: 逆波兰表达式列表
+        - values: 变元真值字典
+        
+        返回值:
+        - result: 逆波兰表达式的真值
+        """
         stack = []
 
         for token in expression:
@@ -158,6 +181,7 @@ def EqualOrNot(formula1, formula2):
     - False: 公式1和公式2不逻辑等价
     """
     def to_cnf(formula: str) -> str:
+        
         variables = sorted(set(filter(str.isalpha, formula)))
         clauses = []
         for i in range(2 ** len(variables)):
