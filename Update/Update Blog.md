@@ -14,3 +14,10 @@
 ### **2023/04/29** **April 29th , 2023**  
 * 更新了 **[math_4.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_4.py)** 题目及参考代码文件  
 * Update with **[math_4.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_4.py)** for reference code and question.
+
+### **2023/05/19** **May 19th , 2023**  
+* 更新了 **[math_last.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_last.py)** 题目及参考代码文件  
+* Update with **[math_last.py](https://github.com/MossDream/Discrete-Mathematics-Python/blob/main/Code/math_last.py)** for reference code and question.
+ 
+⚠**特别说明**  
+最后一次文件是挑战题，具体要求如下：
